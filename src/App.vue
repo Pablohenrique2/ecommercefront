@@ -1,26 +1,25 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <nav v-if="isHomeRoute" class="bg-[#fff159] h-[60px] flex items-center justify-between px-[20px]">
+    <img src="../public/img/logo-site.png" class="w-[150px]" alt="">
+    <div>
+      <router-link to="/home">Produtos</router-link> |
+      <router-link to="/cadastrar">cadastrar</router-link>
+    </div>
+  </nav>
+  <router-view/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  computed: {
+    isHomeRoute() {
+      return this.$route.path !== '/';
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
